@@ -17,4 +17,15 @@ describe('fetchBreedDescription', () => {
       done();
     });
   });
+  it('returns an error and null description for an invalid breed, via callback', (done) => {
+    fetchBreedDescription('InvalidBreed', (err, desc) => {
+      // we expect an error for this scenario
+      assert.isNull(err);
+
+      // we expect the description to be 'Breed not found.'
+      assert.equal(desc, 'Breed not found.');
+
+      done();
+    });
+  });
 });
